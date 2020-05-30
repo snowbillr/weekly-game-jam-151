@@ -1,0 +1,44 @@
+import { VIEWPORT } from '../constants/viewport';
+import { SCENE_KEYS } from '../constants/scene-keys';
+
+export class PreloadScene extends Phaser.Scene {
+  constructor() {
+    super({ key: SCENE_KEYS.PRELOAD });
+  }
+
+  preload() {
+    this.cameras.main.setBackgroundColor(0x3D253B);
+    this.setUpProgressBar();
+
+    this.load.image('background-blue', 'assets/pack/Background/Blue.png');
+
+    this.load.animation('virtual-guy-animations', 'assets/characters/virtual-guy.animations.json');
+    this.load.spritesheet('virtual-guy', 'assets/characters/virtual-guy.png', { frameWidth: 32, frameHeight: 32 });
+
+    this.load.image('hurdles-ground', 'assets/games/hurdles/ground.png');
+    this.load.spritesheet('hurdles-hurdle', 'assets/games/hurdles/hurdle.spritesheet.png', { frameWidth: 26, frameHeight: 20 });
+  }
+
+  create() {
+    this.scene.start(SCENE_KEYS.TITLE);
+  }
+
+  private setUpProgressBar() {
+    const centerX = VIEWPORT.WIDTH / 2;
+    const centerY = VIEWPORT.HEIGHT / 2;
+
+    const loaderWidth = 150;
+    const loaderHeight = 40;
+    const borderSize = 3;
+
+    const loaderBorder = this.add.rectangle(centerX - loaderWidth / 2, centerY, loaderWidth, loaderHeight, 0xDA4E38)
+      .setOrigin(0, 0.5)
+    const loaderBar = this.add.rectangle(centerX - loaderWidth / 2 + borderSize, centerY, 0, loaderHeight - borderSize * 2, 0xEE8D2E)
+      .setOrigin(0, 0.5)
+
+    this.load.on(Phaser.Loader.Events.PROGRESS, (progress: number) => {
+      const loaderBarWidth = progress * (loaderWidth - borderSize * 2);
+      loaderBar.width = loaderBarWidth;
+    });
+  }
+}
