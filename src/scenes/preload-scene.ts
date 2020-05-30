@@ -21,6 +21,13 @@ export class PreloadScene extends Phaser.Scene {
 
     this.load.animation('virtual-guy-animations', 'assets/characters/virtual-guy.animations.json');
     this.load.spritesheet('virtual-guy', 'assets/characters/virtual-guy.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.animation('mask-dude-animations', 'assets/characters/mask-dude.animations.json');
+    this.load.spritesheet('mask-dude', 'assets/characters/mask-dude.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.animation('ninja-frog-animations', 'assets/characters/ninja-frog.animations.json');
+    this.load.spritesheet('ninja-frog', 'assets/characters/ninja-frog.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.animation('pink-man-animations', 'assets/characters/pink-man.animations.json');
+    this.load.spritesheet('pink-man', 'assets/characters/pink-man.png', { frameWidth: 32, frameHeight: 32 });
+
 
     this.load.image('hurdles-ground', 'assets/games/hurdles/ground.png');
     this.load.spritesheet('hurdles-hurdle', 'assets/games/hurdles/hurdle.spritesheet.png', { frameWidth: 26, frameHeight: 20 });

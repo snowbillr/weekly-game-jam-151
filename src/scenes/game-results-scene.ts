@@ -32,12 +32,12 @@ export class GameResultsScene extends Phaser.Scene {
       second: {
         x: VIEWPORT.WIDTH / 2 - 60,
         y: VIEWPORT.HEIGHT / 2 + 100,
-        height: 60
+        height: 40
       },
       third: {
         x: VIEWPORT.WIDTH / 2 + 60,
         y: VIEWPORT.HEIGHT / 2 + 100,
-        height: 60
+        height: 20
       }
     }
     this.add.image(podiums.second.x, podiums.second.y, 'podium-second')
@@ -49,6 +49,14 @@ export class GameResultsScene extends Phaser.Scene {
 
     const firstPlace = Characters[resultsData.first];
     this.add.sprite(podiums.first.x, podiums.first.y - podiums.first.height, firstPlace.texture, 0)
+      .setOrigin(0.5, 1);
+
+    const secondPlace = Characters[resultsData.second];
+    this.add.sprite(podiums.second.x, podiums.second.y - podiums.second.height, secondPlace.texture, 0)
+      .setOrigin(0.5, 1);
+
+    const thirdPlace = Characters[resultsData.third];
+    this.add.sprite(podiums.third.x, podiums.third.y - podiums.third.height, thirdPlace.texture, 0)
       .setOrigin(0.5, 1);
   }
 

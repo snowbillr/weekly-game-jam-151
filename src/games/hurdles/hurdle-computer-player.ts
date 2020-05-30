@@ -1,14 +1,15 @@
 import { HurdlesScene } from './hurdles-scene';
 import { VIEWPORT } from '../../constants/viewport';
-import { CharacterDescriptor, CharacterID, Characters } from '../../constants/characters';
+import { CharacterID, Characters, CharacterDescriptor } from '../../constants/characters';
 
-export class HurdlesPlayer {
+export class HurdlesComputerPlayer {
   character: CharacterDescriptor;
   sprite: Phaser.Physics.Arcade.Sprite;
   hasJumped: boolean;
 
   constructor(scene: HurdlesScene, characterID: CharacterID) {
     this.character = Characters[characterID];
+
     this.hasJumped = false;
 
     this.sprite = scene.physics.add.sprite(20, VIEWPORT.HEIGHT - 96 - 16, this.character.texture);
@@ -24,19 +25,7 @@ export class HurdlesPlayer {
 
     (this.sprite.body as Phaser.Physics.Arcade.Body).onWorldBounds = true;
 
-    const jump = () => {
-      if (this.hasJumped) return;
-
-      this.hasJumped = true;
-      this.sprite.setVelocityY(-150);
-    }
-    scene.input.on('pointerdown', jump);
-    scene.input.keyboard.on('keydown-SPACE', jump)
-
     scene.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
-      scene.input.off('pointerdown', jump);
-      scene.input.keyboard.off('keydown-SPACE', jump)
-
       this.sprite.destroy();
     });
   }
@@ -44,6 +33,12 @@ export class HurdlesPlayer {
   update() {
     if (this.sprite.body.touching.down) {
       this.hasJumped = false;
+    } else {
+      const shouldJump = Phaser.Math.RND.pick([true, false, false]);
+      if (shouldJump && !this.hasJumped) {
+        this.hasJumped = true;
+        this.sprite.setVelocityY(-150);
+      }
     }
   }
 }

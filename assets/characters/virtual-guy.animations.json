@@ -17,6 +17,68 @@
       ],
       "repeat": -1,
       "frameRate": 9
+    },
+    {
+      "key": "virtual-guy-run",
+      "frames": [
+        { "key": "virtual-guy", "frame": 12 },
+        { "key": "virtual-guy", "frame": 13 },
+        { "key": "virtual-guy", "frame": 14 },
+        { "key": "virtual-guy", "frame": 15 },
+        { "key": "virtual-guy", "frame": 16 },
+        { "key": "virtual-guy", "frame": 17 },
+        { "key": "virtual-guy", "frame": 18 },
+        { "key": "virtual-guy", "frame": 19 },
+        { "key": "virtual-guy", "frame": 20 },
+        { "key": "virtual-guy", "frame": 21 },
+        { "key": "virtual-guy", "frame": 22 },
+        { "key": "virtual-guy", "frame": 23 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "virtual-guy-roll",
+      "frames": [
+        { "key": "virtual-guy", "frame": 24 },
+        { "key": "virtual-guy", "frame": 25 },
+        { "key": "virtual-guy", "frame": 26 },
+        { "key": "virtual-guy", "frame": 27 },
+        { "key": "virtual-guy", "frame": 28 },
+        { "key": "virtual-guy", "frame": 29 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "virtual-guy-hit",
+      "frames": [
+        { "key": "virtual-guy", "frame": 36 },
+        { "key": "virtual-guy", "frame": 37 },
+        { "key": "virtual-guy", "frame": 38 },
+        { "key": "virtual-guy", "frame": 39 },
+        { "key": "virtual-guy", "frame": 40 },
+        { "key": "virtual-guy", "frame": 41 },
+        { "key": "virtual-guy", "frame": 42 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "virtual-guy-jump",
+      "frames": [
+        { "key": "virtual-guy", "frame": 48 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "virtual-guy-fall",
+      "frames": [
+        { "key": "virtual-guy", "frame": 49 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
     }
   ]
 }

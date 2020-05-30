@@ -3,6 +3,7 @@ import { SCENE_KEYS } from '../../constants/scene-keys'
 import { VIEWPORT } from '../../constants/viewport';
 import { HurdlesPlayer } from './hurdles-player';
 import { CharacterID } from '../../constants/characters';
+import { HurdlesComputerPlayer } from './hurdle-computer-player';
 
 const numHurdles = 10;
 const hurdleSpacing = 250;
@@ -11,6 +12,7 @@ const groundY = VIEWPORT.HEIGHT - 96;
 
 export class HurdlesScene extends Phaser.Scene {
   player!: HurdlesPlayer;
+  computerPlayers!: HurdlesComputerPlayer[];
   ground!: Phaser.GameObjects.TileSprite;
   hurdles!: Phaser.Physics.Arcade.Sprite[];
   background!: Phaser.GameObjects.TileSprite;
@@ -33,6 +35,7 @@ export class HurdlesScene extends Phaser.Scene {
     this.background.tilePositionX = this.cameras.main.scrollX * 0.6;
 
     this.player.update();
+    this.computerPlayers.forEach(c => c.update());
   }
 
   private createTrack() {
@@ -49,7 +52,12 @@ export class HurdlesScene extends Phaser.Scene {
   }
 
   private addPlayers() {
-    this.player = new HurdlesPlayer(this);
+    this.player = new HurdlesPlayer(this, CharacterID.VIRTUAL_GUY);
+    this.computerPlayers = [
+      new HurdlesComputerPlayer(this, CharacterID.MASK_DUDE),
+      new HurdlesComputerPlayer(this, CharacterID.NINJA_FROG),
+      new HurdlesComputerPlayer(this, CharacterID.PINK_MAN),
+    ];
   }
 
   private addPhysics() {
@@ -73,14 +81,38 @@ export class HurdlesScene extends Phaser.Scene {
           hurdle.setVelocityY(Phaser.Math.RND.between(-150, -250));
         }
       });
+
+      this.computerPlayers.forEach(computer => {
+        this.physics.add.collider(hurdle, computer.sprite, () => {
+          hurdle.setVelocityX(Phaser.Math.RND.between(100, 200));
+          if (!hurdle.body.touching.up) {
+            hurdle.setVelocityY(Phaser.Math.RND.between(-150, -250));
+          }
+        });
+      })
     });
   }
 
   addWinCondition() {
     this.physics.world.on(Phaser.Physics.Arcade.Events.WORLD_BOUNDS, () => {
+      const positions = [
+        {
+          characterID: this.player.character.id,
+          x: this.player.sprite.x
+        },
+        ...this.computerPlayers.map(c => {
+          return {
+            characterID: c.character.id,
+            x: c.sprite.x
+          }
+        })
+      ].sort((a, b) => b.x - a.x);
+
       this.scene.start(SCENE_KEYS.GAME_RESULTS, {
         name: 'HURDLES',
-        first: CharacterID.VIRTUAL_GUY
+        first: positions[0].characterID,
+        second: positions[1].characterID,
+        third: positions[2].characterID,
       });
     });
   }
