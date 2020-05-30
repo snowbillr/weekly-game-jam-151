@@ -5,5 +5,7 @@ export const SCENE_KEYS = {
 
   games: {
     HURDLES: 'hurdles'
-  }
+  },
+
+  GAME_RESULTS: 'game-results'
 };

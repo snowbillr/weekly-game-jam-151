@@ -1,0 +1,65 @@
+import { SCENE_KEYS } from '../constants/scene-keys';
+import { VIEWPORT } from '../constants/viewport';
+
+export enum CharacterID {
+  VIRTUAL_GUY
+}
+
+const characters = [
+  {
+    id: CharacterID.VIRTUAL_GUY,
+    texture: 'virtual-guy'
+  }
+]
+
+type ResultsData = {
+  first: CharacterID,
+  second: CharacterID,
+  third: CharacterID,
+}
+
+export class GameResultsScene extends Phaser.Scene {
+  background!: Phaser.GameObjects.TileSprite;
+
+  constructor() {
+    super({ key: SCENE_KEYS.GAME_RESULTS });
+  }
+
+  create(resultsData: ResultsData) {
+    this.background = this.add.tileSprite(0, 0, VIEWPORT.WIDTH, VIEWPORT.HEIGHT, 'background-yellow')
+      .setOrigin(0);
+
+    const podiums = {
+      first: {
+        x: VIEWPORT.WIDTH / 2,
+        y: VIEWPORT.HEIGHT / 2 + 100,
+        height: 60
+      },
+      second: {
+        x: VIEWPORT.WIDTH / 2 - 60,
+        y: VIEWPORT.HEIGHT / 2 + 100,
+        height: 60
+      },
+      third: {
+        x: VIEWPORT.WIDTH / 2 + 60,
+        y: VIEWPORT.HEIGHT / 2 + 100,
+        height: 60
+      }
+    }
+    this.add.image(podiums.second.x, podiums.second.y, 'podium-second')
+      .setOrigin(0.5, 1);
+    this.add.image(podiums.first.x, podiums.first.y, 'podium-first')
+      .setOrigin(0.5, 1);
+    this.add.image(podiums.third.x, podiums.third.y, 'podium-third')
+      .setOrigin(0.5, 1);
+
+    const firstPlace = characters.find(c => c.id === resultsData.first)!;
+    this.add.sprite(podiums.first.x, podiums.first.y - podiums.first.height, firstPlace.texture, 0)
+      .setOrigin(0.5, 1);
+  }
+
+  update() {
+    this.background.tilePositionX += 1;
+    this.background.tilePositionY -= 1;
+  }
+}

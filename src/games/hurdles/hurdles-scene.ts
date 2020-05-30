@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import { SCENE_KEYS } from '../../constants/scene-keys'
 import { VIEWPORT } from '../../constants/viewport';
 import { HurdlesPlayer } from './hurdles-player';
+import { CharacterID } from '../../scenes/game-results-scene';
 
 const numHurdles = 10;
 const hurdleSpacing = 250;
@@ -22,6 +23,7 @@ export class HurdlesScene extends Phaser.Scene {
     this.createTrack();
     this.addPlayers();
     this.addPhysics();
+    this.addWinCondition();
 
     this.cameras.main.setBounds(0, 0, worldWidth, VIEWPORT.HEIGHT);
     this.cameras.main.startFollow(this.player.sprite);
@@ -52,6 +54,7 @@ export class HurdlesScene extends Phaser.Scene {
 
   private addPhysics() {
     this.physics.world.setBounds(0, 0, worldWidth, VIEWPORT.HEIGHT);
+    this.physics.world.setBoundsCollision(false, true, false, false);
 
     this.physics.add.existing(this.ground);
     (this.ground.body as Phaser.Physics.Arcade.Body).immovable = true;
@@ -70,6 +73,12 @@ export class HurdlesScene extends Phaser.Scene {
           hurdle.setVelocityY(Phaser.Math.RND.between(-150, -250));
         }
       });
+    });
+  }
+
+  addWinCondition() {
+    this.physics.world.on(Phaser.Physics.Arcade.Events.WORLD_BOUNDS, () => {
+      this.scene.start(SCENE_KEYS.GAME_RESULTS, { first: CharacterID.VIRTUAL_GUY });
     });
   }
 }

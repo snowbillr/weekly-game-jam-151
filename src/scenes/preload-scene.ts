@@ -11,6 +11,11 @@ export class PreloadScene extends Phaser.Scene {
     this.setUpProgressBar();
 
     this.load.image('background-blue', 'assets/pack/Background/Blue.png');
+    this.load.image('background-yellow', 'assets/pack/Background/Yellow.png');
+
+    this.load.image('podium-first', 'assets/podiums/first.png');
+    this.load.image('podium-second', 'assets/podiums/second.png');
+    this.load.image('podium-third', 'assets/podiums/third.png');
 
     this.load.animation('virtual-guy-animations', 'assets/characters/virtual-guy.animations.json');
     this.load.spritesheet('virtual-guy', 'assets/characters/virtual-guy.png', { frameWidth: 32, frameHeight: 32 });

@@ -19,6 +19,8 @@ export class HurdlesPlayer {
       .setBounce(0.2, 0.2)
       .setCollideWorldBounds(true);
 
+    (this.sprite.body as Phaser.Physics.Arcade.Body).onWorldBounds = true;
+
     const jump = () => {
       if (this.hasJumped) return;
 
