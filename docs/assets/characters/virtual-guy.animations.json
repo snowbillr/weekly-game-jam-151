@@ -1,0 +1,22 @@
+{
+  "anims": [
+    {
+      "key": "virtual-guy-idle",
+      "frames": [
+        { "key": "virtual-guy", "frame": 0 },
+        { "key": "virtual-guy", "frame": 1 },
+        { "key": "virtual-guy", "frame": 2 },
+        { "key": "virtual-guy", "frame": 3 },
+        { "key": "virtual-guy", "frame": 4 },
+        { "key": "virtual-guy", "frame": 5 },
+        { "key": "virtual-guy", "frame": 6 },
+        { "key": "virtual-guy", "frame": 7 },
+        { "key": "virtual-guy", "frame": 8 },
+        { "key": "virtual-guy", "frame": 9 },
+        { "key": "virtual-guy", "frame": 10 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    }
+  ]
+}
