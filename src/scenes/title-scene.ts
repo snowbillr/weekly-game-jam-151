@@ -14,7 +14,7 @@ export class TitleScene extends Phaser.Scene {
     this.background = this.add.tileSprite(0, 0, VIEWPORT.WIDTH, VIEWPORT.HEIGHT, 'background-green')
       .setOrigin(0);
 
-    this.add.bitmapText(VIEWPORT.WIDTH / 2, 100, 'matchup-48', 'Event List')
+    this.add.bitmapText(VIEWPORT.WIDTH / 2, 100, 'matchup-64-glow', 'One Button Olympics!')
       .setOrigin(0.5)
 
     this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2, 'matchup-36-white', 'Hurdles')

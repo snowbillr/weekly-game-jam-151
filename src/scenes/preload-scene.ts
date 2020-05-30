@@ -16,6 +16,7 @@ export class PreloadScene extends Phaser.Scene {
     this.load.audio('music/race', ['assets/music/race.mp3', 'assets/music/race.ogg']);
     this.load.audio('music/title', ['assets/music/title.mp3', 'assets/music/title.ogg']);
 
+    this.load.bitmapFont('matchup-64-glow', 'assets/fonts/matchup-64-glow.png', 'assets/fonts/matchup-64-glow.xml');
     this.load.bitmapFont('matchup-48', 'assets/fonts/matchup-48.png', 'assets/fonts/matchup-48.xml');
     this.load.bitmapFont('matchup-24-white', 'assets/fonts/matchup-24-white.png', 'assets/fonts/matchup-24-white.xml');
     this.load.bitmapFont('matchup-36-white', 'assets/fonts/matchup-36-white.png', 'assets/fonts/matchup-36-white.xml');
