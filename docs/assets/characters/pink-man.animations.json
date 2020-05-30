@@ -1,0 +1,84 @@
+{
+  "anims": [
+    {
+      "key": "pink-man-idle",
+      "frames": [
+        { "key": "pink-man", "frame": 0 },
+        { "key": "pink-man", "frame": 1 },
+        { "key": "pink-man", "frame": 2 },
+        { "key": "pink-man", "frame": 3 },
+        { "key": "pink-man", "frame": 4 },
+        { "key": "pink-man", "frame": 5 },
+        { "key": "pink-man", "frame": 6 },
+        { "key": "pink-man", "frame": 7 },
+        { "key": "pink-man", "frame": 8 },
+        { "key": "pink-man", "frame": 9 },
+        { "key": "pink-man", "frame": 10 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "pink-man-run",
+      "frames": [
+        { "key": "pink-man", "frame": 12 },
+        { "key": "pink-man", "frame": 13 },
+        { "key": "pink-man", "frame": 14 },
+        { "key": "pink-man", "frame": 15 },
+        { "key": "pink-man", "frame": 16 },
+        { "key": "pink-man", "frame": 17 },
+        { "key": "pink-man", "frame": 18 },
+        { "key": "pink-man", "frame": 19 },
+        { "key": "pink-man", "frame": 20 },
+        { "key": "pink-man", "frame": 21 },
+        { "key": "pink-man", "frame": 22 },
+        { "key": "pink-man", "frame": 23 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "pink-man-roll",
+      "frames": [
+        { "key": "pink-man", "frame": 24 },
+        { "key": "pink-man", "frame": 25 },
+        { "key": "pink-man", "frame": 26 },
+        { "key": "pink-man", "frame": 27 },
+        { "key": "pink-man", "frame": 28 },
+        { "key": "pink-man", "frame": 29 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "pink-man-hit",
+      "frames": [
+        { "key": "pink-man", "frame": 36 },
+        { "key": "pink-man", "frame": 37 },
+        { "key": "pink-man", "frame": 38 },
+        { "key": "pink-man", "frame": 39 },
+        { "key": "pink-man", "frame": 40 },
+        { "key": "pink-man", "frame": 41 },
+        { "key": "pink-man", "frame": 42 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "pink-man-jump",
+      "frames": [
+        { "key": "pink-man", "frame": 48 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "pink-man-fall",
+      "frames": [
+        { "key": "pink-man", "frame": 49 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    }
+  ]
+}

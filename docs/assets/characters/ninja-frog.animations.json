@@ -1,0 +1,84 @@
+{
+  "anims": [
+    {
+      "key": "ninja-frog-idle",
+      "frames": [
+        { "key": "ninja-frog", "frame": 0 },
+        { "key": "ninja-frog", "frame": 1 },
+        { "key": "ninja-frog", "frame": 2 },
+        { "key": "ninja-frog", "frame": 3 },
+        { "key": "ninja-frog", "frame": 4 },
+        { "key": "ninja-frog", "frame": 5 },
+        { "key": "ninja-frog", "frame": 6 },
+        { "key": "ninja-frog", "frame": 7 },
+        { "key": "ninja-frog", "frame": 8 },
+        { "key": "ninja-frog", "frame": 9 },
+        { "key": "ninja-frog", "frame": 10 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "ninja-frog-run",
+      "frames": [
+        { "key": "ninja-frog", "frame": 12 },
+        { "key": "ninja-frog", "frame": 13 },
+        { "key": "ninja-frog", "frame": 14 },
+        { "key": "ninja-frog", "frame": 15 },
+        { "key": "ninja-frog", "frame": 16 },
+        { "key": "ninja-frog", "frame": 17 },
+        { "key": "ninja-frog", "frame": 18 },
+        { "key": "ninja-frog", "frame": 19 },
+        { "key": "ninja-frog", "frame": 20 },
+        { "key": "ninja-frog", "frame": 21 },
+        { "key": "ninja-frog", "frame": 22 },
+        { "key": "ninja-frog", "frame": 23 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "ninja-frog-roll",
+      "frames": [
+        { "key": "ninja-frog", "frame": 24 },
+        { "key": "ninja-frog", "frame": 25 },
+        { "key": "ninja-frog", "frame": 26 },
+        { "key": "ninja-frog", "frame": 27 },
+        { "key": "ninja-frog", "frame": 28 },
+        { "key": "ninja-frog", "frame": 29 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "ninja-frog-hit",
+      "frames": [
+        { "key": "ninja-frog", "frame": 36 },
+        { "key": "ninja-frog", "frame": 37 },
+        { "key": "ninja-frog", "frame": 38 },
+        { "key": "ninja-frog", "frame": 39 },
+        { "key": "ninja-frog", "frame": 40 },
+        { "key": "ninja-frog", "frame": 41 },
+        { "key": "ninja-frog", "frame": 42 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "ninja-frog-jump",
+      "frames": [
+        { "key": "ninja-frog", "frame": 48 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    },
+    {
+      "key": "ninja-frog-fall",
+      "frames": [
+        { "key": "ninja-frog", "frame": 49 }
+      ],
+      "repeat": -1,
+      "frameRate": 9
+    }
+  ]
+}
