@@ -3,7 +3,7 @@ import { BootScene } from './scenes/boot-scene';
 import { PreloadScene } from './scenes/preload-scene';
 import { VIEWPORT } from './constants/viewport';
 import { TitleScene } from './scenes/title-scene';
-import { HurdlesScene } from './scenes/games/hurdles-scene';
+import { HurdlesScene } from './games/hurdles/hurdles-scene';
 
 const scenes = [
   // BootScene,
