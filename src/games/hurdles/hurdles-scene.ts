@@ -29,6 +29,8 @@ export class HurdlesScene extends Phaser.Scene {
 
     this.cameras.main.setBounds(0, 0, worldWidth, VIEWPORT.HEIGHT);
     this.cameras.main.startFollow(this.player.sprite);
+
+    this.sound.play('music/race', { loop: true });
   }
 
   update() {
@@ -108,6 +110,7 @@ export class HurdlesScene extends Phaser.Scene {
         })
       ].sort((a, b) => b.x - a.x);
 
+      this.sound.stopByKey('music/race');
       this.scene.start(SCENE_KEYS.GAME_RESULTS, {
         name: 'HURDLES',
         first: positions[0].characterID,

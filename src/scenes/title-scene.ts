@@ -20,11 +20,18 @@ export class TitleScene extends Phaser.Scene {
     this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2, 'matchup-36-white', 'Hurdles')
       .setOrigin(0.5)
       .setInteractive()
-      .once(Phaser.Input.Events.POINTER_DOWN, () => this.scene.start(SCENE_KEYS.games.HURDLES));
+      .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(SCENE_KEYS.games.HURDLES));
+
+    this.sound.play('music/title', { loop: true });
   }
 
   update() {
     this.background.tilePositionX += 1;
     this.background.tilePositionY += 1;
+  }
+
+  startEvent(sceneKey: string) {
+    this.sound.stopByKey('music/title');
+    this.scene.start(sceneKey);
   }
 }

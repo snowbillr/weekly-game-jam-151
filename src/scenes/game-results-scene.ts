@@ -17,6 +17,8 @@ export class GameResultsScene extends Phaser.Scene {
   }
 
   create(resultsData: ResultsData) {
+    this.sound.play('music/event-results', { loop: true });
+
     this.background = this.add.tileSprite(0, 0, VIEWPORT.WIDTH, VIEWPORT.HEIGHT, 'background-yellow')
       .setOrigin(0);
 
@@ -29,7 +31,10 @@ export class GameResultsScene extends Phaser.Scene {
     this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT - 40, 'matchup-36-white', 'Back to Event List')
       .setOrigin(0.5)
       .setInteractive()
-      .once(Phaser.Input.Events.POINTER_DOWN, () => this.scene.start(SCENE_KEYS.TITLE))
+      .once(Phaser.Input.Events.POINTER_DOWN, () => {
+        this.sound.stopByKey('music/event-results');
+        this.scene.start(SCENE_KEYS.TITLE);
+      })
 
     // podiums
     const podiums = {
