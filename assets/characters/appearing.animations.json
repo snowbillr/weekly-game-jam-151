@@ -1,0 +1,18 @@
+{
+  "anims": [
+    {
+      "key": "character-appearing",
+      "frames": [
+        { "key": "character-appearing", "frame": 0 },
+        { "key": "character-appearing", "frame": 1 },
+        { "key": "character-appearing", "frame": 2 },
+        { "key": "character-appearing", "frame": 3 },
+        { "key": "character-appearing", "frame": 4 },
+        { "key": "character-appearing", "frame": 5 },
+        { "key": "character-appearing", "frame": 6 }
+      ],
+      "repeat": 0,
+      "frameRate": 9
+    }
+  ]
+}
