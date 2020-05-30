@@ -78,7 +78,10 @@ export class HurdlesScene extends Phaser.Scene {
 
   addWinCondition() {
     this.physics.world.on(Phaser.Physics.Arcade.Events.WORLD_BOUNDS, () => {
-      this.scene.start(SCENE_KEYS.GAME_RESULTS, { first: CharacterID.VIRTUAL_GUY });
+      this.scene.start(SCENE_KEYS.GAME_RESULTS, {
+        name: 'HURDLES',
+        first: CharacterID.VIRTUAL_GUY
+      });
     });
   }
 }

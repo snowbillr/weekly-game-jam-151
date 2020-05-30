@@ -13,6 +13,7 @@ const characters = [
 ]
 
 type ResultsData = {
+  name: string,
   first: CharacterID,
   second: CharacterID,
   third: CharacterID,
@@ -28,6 +29,9 @@ export class GameResultsScene extends Phaser.Scene {
   create(resultsData: ResultsData) {
     this.background = this.add.tileSprite(0, 0, VIEWPORT.WIDTH, VIEWPORT.HEIGHT, 'background-yellow')
       .setOrigin(0);
+
+    this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 - 60, 'matchup-48', resultsData.name)
+      .setOrigin(0.5);
 
     const podiums = {
       first: {

@@ -10,6 +10,8 @@ export class PreloadScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor(0x3D253B);
     this.setUpProgressBar();
 
+    this.load.bitmapFont('matchup-48', 'assets/fonts/matchup-48.png', 'assets/fonts/matchup-48.xml');
+
     this.load.image('background-blue', 'assets/pack/Background/Blue.png');
     this.load.image('background-yellow', 'assets/pack/Background/Yellow.png');
 
