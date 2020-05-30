@@ -11,9 +11,12 @@ export class PreloadScene extends Phaser.Scene {
     this.setUpProgressBar();
 
     this.load.bitmapFont('matchup-48', 'assets/fonts/matchup-48.png', 'assets/fonts/matchup-48.xml');
+    this.load.bitmapFont('matchup-24-white', 'assets/fonts/matchup-24-white.png', 'assets/fonts/matchup-24-white.xml');
+    this.load.bitmapFont('matchup-36-white', 'assets/fonts/matchup-36-white.png', 'assets/fonts/matchup-36-white.xml');
 
     this.load.image('background-blue', 'assets/pack/Background/Blue.png');
     this.load.image('background-yellow', 'assets/pack/Background/Yellow.png');
+    this.load.image('background-green', 'assets/pack/Background/Green.png');
 
     this.load.image('podium-first', 'assets/podiums/first.png');
     this.load.image('podium-second', 'assets/podiums/second.png');

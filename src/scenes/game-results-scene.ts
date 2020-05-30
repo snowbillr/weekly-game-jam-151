@@ -20,9 +20,13 @@ export class GameResultsScene extends Phaser.Scene {
     this.background = this.add.tileSprite(0, 0, VIEWPORT.WIDTH, VIEWPORT.HEIGHT, 'background-yellow')
       .setOrigin(0);
 
+    // event name
     this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 - 60, 'matchup-48', resultsData.name)
-      .setOrigin(0.5);
+      .setOrigin(0.5)
+      .setLetterSpacing(2)
 
+
+    // podiums
     const podiums = {
       first: {
         x: VIEWPORT.WIDTH / 2,
@@ -40,6 +44,7 @@ export class GameResultsScene extends Phaser.Scene {
         height: 20
       }
     }
+
     this.add.image(podiums.second.x, podiums.second.y, 'podium-second')
       .setOrigin(0.5, 1);
     this.add.image(podiums.first.x, podiums.first.y, 'podium-first')
@@ -58,6 +63,13 @@ export class GameResultsScene extends Phaser.Scene {
     const thirdPlace = Characters[resultsData.third];
     this.add.sprite(podiums.third.x, podiums.third.y - podiums.third.height, thirdPlace.texture, 0)
       .setOrigin(0.5, 1);
+
+    this.add.bitmapText(podiums.first.x, podiums.first.y, 'matchup-24-white', '1st')
+      .setOrigin(0.5, 0);
+    this.add.bitmapText(podiums.second.x, podiums.second.y, 'matchup-24-white', '2nd')
+      .setOrigin(0.5, 0);
+    this.add.bitmapText(podiums.third.x, podiums.third.y, 'matchup-24-white', '3rd')
+      .setOrigin(0.5, 0);
   }
 
   update() {
