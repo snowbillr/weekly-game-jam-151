@@ -1,6 +1,7 @@
 import { SCENE_KEYS } from '../constants/scene-keys';
 import { VIEWPORT } from '../constants/viewport';
 import { CharacterID, Characters } from '../constants/characters';
+import { Background } from '../components/background';
 
 type ResultsData = {
   name: string,
@@ -19,8 +20,7 @@ export class GameResultsScene extends Phaser.Scene {
   create(resultsData: ResultsData) {
     this.sound.play('music/event-results', { loop: true });
 
-    this.background = this.add.tileSprite(0, 0, VIEWPORT.WIDTH, VIEWPORT.HEIGHT, 'background-yellow')
-      .setOrigin(0);
+    new Background(this);
 
     // event name
     this.add.bitmapText(VIEWPORT.WIDTH / 2, 120, 'matchup-48', resultsData.name)
@@ -80,10 +80,5 @@ export class GameResultsScene extends Phaser.Scene {
       .setOrigin(0.5, 0);
     this.add.bitmapText(podiums.third.x, podiums.third.y, 'matchup-24-white', '3rd')
       .setOrigin(0.5, 0);
-  }
-
-  update() {
-    this.background.tilePositionX += 1;
-    this.background.tilePositionY -= 1;
   }
 }

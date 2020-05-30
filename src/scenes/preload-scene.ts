@@ -22,8 +22,12 @@ export class PreloadScene extends Phaser.Scene {
     this.load.bitmapFont('matchup-36-white', 'assets/fonts/matchup-36-white.png', 'assets/fonts/matchup-36-white.xml');
 
     this.load.image('background-blue', 'assets/pack/Background/Blue.png');
-    this.load.image('background-yellow', 'assets/pack/Background/Yellow.png');
+    this.load.image('background-brown', 'assets/pack/Background/Brown.png');
+    this.load.image('background-gray', 'assets/pack/Background/Gray.png');
     this.load.image('background-green', 'assets/pack/Background/Green.png');
+    this.load.image('background-pink', 'assets/pack/Background/Pink.png');
+    this.load.image('background-purple', 'assets/pack/Background/Purple.png');
+    this.load.image('background-yellow', 'assets/pack/Background/Yellow.png');
 
     this.load.image('podium-first', 'assets/podiums/first.png');
     this.load.image('podium-second', 'assets/podiums/second.png');

@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 import { SCENE_KEYS } from '../constants/scene-keys';
 import { VIEWPORT } from '../constants/viewport';
+import { Background } from '../components/background';
 
 export class TitleScene extends Phaser.Scene {
   background!: Phaser.GameObjects.TileSprite;
@@ -11,8 +12,7 @@ export class TitleScene extends Phaser.Scene {
   }
 
   create() {
-    this.background = this.add.tileSprite(0, 0, VIEWPORT.WIDTH, VIEWPORT.HEIGHT, 'background-green')
-      .setOrigin(0);
+    new Background(this);
 
     this.add.bitmapText(VIEWPORT.WIDTH / 2, 100, 'matchup-64-glow', 'One Button Olympics!')
       .setOrigin(0.5)
@@ -23,11 +23,6 @@ export class TitleScene extends Phaser.Scene {
       .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(SCENE_KEYS.games.HURDLES));
 
     this.sound.play('music/title', { loop: true });
-  }
-
-  update() {
-    this.background.tilePositionX += 1;
-    this.background.tilePositionY += 1;
   }
 
   startEvent(sceneKey: string) {

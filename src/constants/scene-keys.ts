@@ -4,7 +4,8 @@ export const SCENE_KEYS = {
   TITLE: 'title',
 
   games: {
-    HURDLES: 'hurdles'
+    HURDLES: 'hurdles',
+    BALANCE_BEAM: 'balance-beam'
   },
 
   GAME_RESULTS: 'game-results'
