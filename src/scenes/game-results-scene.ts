@@ -21,26 +21,31 @@ export class GameResultsScene extends Phaser.Scene {
       .setOrigin(0);
 
     // event name
-    this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 - 60, 'matchup-48', resultsData.name)
+    this.add.bitmapText(VIEWPORT.WIDTH / 2, 120, 'matchup-48', resultsData.name)
       .setOrigin(0.5)
       .setLetterSpacing(2)
 
+    // back to event list
+    this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT - 40, 'matchup-36-white', 'Back to Event List')
+      .setOrigin(0.5)
+      .setInteractive()
+      .once(Phaser.Input.Events.POINTER_DOWN, () => this.scene.start(SCENE_KEYS.TITLE))
 
     // podiums
     const podiums = {
       first: {
         x: VIEWPORT.WIDTH / 2,
-        y: VIEWPORT.HEIGHT / 2 + 100,
+        y: VIEWPORT.HEIGHT / 2 + 60,
         height: 60
       },
       second: {
         x: VIEWPORT.WIDTH / 2 - 60,
-        y: VIEWPORT.HEIGHT / 2 + 100,
+        y: VIEWPORT.HEIGHT / 2 + 60,
         height: 40
       },
       third: {
         x: VIEWPORT.WIDTH / 2 + 60,
-        y: VIEWPORT.HEIGHT / 2 + 100,
+        y: VIEWPORT.HEIGHT / 2 + 60,
         height: 20
       }
     }
