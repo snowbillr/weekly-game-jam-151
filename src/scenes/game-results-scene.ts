@@ -1,16 +1,6 @@
 import { SCENE_KEYS } from '../constants/scene-keys';
 import { VIEWPORT } from '../constants/viewport';
-
-export enum CharacterID {
-  VIRTUAL_GUY
-}
-
-const characters = [
-  {
-    id: CharacterID.VIRTUAL_GUY,
-    texture: 'virtual-guy'
-  }
-]
+import { CharacterID, Characters } from '../constants/characters';
 
 type ResultsData = {
   name: string,
@@ -57,7 +47,7 @@ export class GameResultsScene extends Phaser.Scene {
     this.add.image(podiums.third.x, podiums.third.y, 'podium-third')
       .setOrigin(0.5, 1);
 
-    const firstPlace = characters.find(c => c.id === resultsData.first)!;
+    const firstPlace = Characters[resultsData.first];
     this.add.sprite(podiums.first.x, podiums.first.y - podiums.first.height, firstPlace.texture, 0)
       .setOrigin(0.5, 1);
   }

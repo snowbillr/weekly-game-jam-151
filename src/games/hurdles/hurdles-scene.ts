@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 import { SCENE_KEYS } from '../../constants/scene-keys'
 import { VIEWPORT } from '../../constants/viewport';
 import { HurdlesPlayer } from './hurdles-player';
-import { CharacterID } from '../../scenes/game-results-scene';
+import { CharacterID } from '../../constants/characters';
 
 const numHurdles = 10;
 const hurdleSpacing = 250;
