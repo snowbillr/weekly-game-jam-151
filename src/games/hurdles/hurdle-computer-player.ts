@@ -31,12 +31,18 @@ export class HurdlesComputerPlayer {
   }
 
   update() {
+    if (this.sprite.body.velocity.y > 0) {
+      this.sprite.anims.play(`${this.character.texture}-fall`, true)
+    }
+
     if (this.sprite.body.touching.down) {
+      this.sprite.anims.play(`${this.character.texture}-run`, true)
       this.hasJumped = false;
     } else {
       const shouldJump = Phaser.Math.RND.pick([true, false, false]);
       if (shouldJump && !this.hasJumped) {
         this.hasJumped = true;
+        this.sprite.anims.play(`${this.character.texture}-jump`)
         this.sprite.setVelocityY(-150);
       }
     }
