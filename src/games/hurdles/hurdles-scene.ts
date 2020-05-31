@@ -39,7 +39,7 @@ export class HurdlesScene extends Phaser.Scene {
   }
 
   private createTrack() {
-     new Background(this);
+     (new Background(this)).tileSprite.setScrollFactor(0);
 
     this.ground = this.add.tileSprite(0, groundY, worldWidth, 96, 'hurdles-ground')
       .setOrigin(0);
