@@ -42,9 +42,16 @@ export class PreloadScene extends Phaser.Scene {
     this.load.animation('pink-man-animations', 'assets/characters/pink-man.animations.json');
     this.load.spritesheet('pink-man', 'assets/characters/pink-man.png', { frameWidth: 32, frameHeight: 32 });
 
+    this.load.image('timing-bar', 'assets/timing-bar.png');
+    this.load.spritesheet('flag', 'assets/components/flag.png', { frameWidth: 64, frameHeight: 64 });
+    this.load.animation('flag-animations', 'assets/components/flag.animations.json');
 
     this.load.image('hurdles-ground', 'assets/games/hurdles/ground.png');
     this.load.spritesheet('hurdles-hurdle', 'assets/games/hurdles/hurdle.spritesheet.png', { frameWidth: 26, frameHeight: 20 });
+
+    this.load.image('beam', 'assets/games/balance-beam/beam.png');
+    this.load.image('beam-edge', 'assets/games/balance-beam/beam-edge.png');
+    this.load.image('beam-legs', 'assets/games/balance-beam/beam-legs.png');
   }
 
   create() {

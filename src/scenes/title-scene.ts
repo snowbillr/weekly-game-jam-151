@@ -22,6 +22,11 @@ export class TitleScene extends Phaser.Scene {
       .setInteractive()
       .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(SCENE_KEYS.games.HURDLES));
 
+    this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 + 50, 'matchup-36-white', 'Balance Beam')
+      .setOrigin(0.5)
+      .setInteractive()
+      .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(SCENE_KEYS.games.BALANCE_BEAM));
+
     this.sound.play('music/title', { loop: true });
   }
 

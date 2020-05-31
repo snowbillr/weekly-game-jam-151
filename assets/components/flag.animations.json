@@ -1,0 +1,21 @@
+{
+  "anims": [
+    {
+      "key": "flag-wave",
+      "frames": [
+        { "key": "flag", "frame": 0 },
+        { "key": "flag", "frame": 1 },
+        { "key": "flag", "frame": 2 },
+        { "key": "flag", "frame": 3 },
+        { "key": "flag", "frame": 4 },
+        { "key": "flag", "frame": 5 },
+        { "key": "flag", "frame": 6 },
+        { "key": "flag", "frame": 7 },
+        { "key": "flag", "frame": 8 },
+        { "key": "flag", "frame": 9 }
+      ],
+      "repeat": -1,
+      "frameRate": 12
+    }
+  ]
+}

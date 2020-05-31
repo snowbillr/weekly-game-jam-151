@@ -4,6 +4,7 @@ import { VIEWPORT } from '../../constants/viewport';
 import { HurdlesPlayer } from './hurdles-player';
 import { CharacterID } from '../../constants/characters';
 import { HurdlesComputerPlayer } from './hurdle-computer-player';
+import { Background } from '../../components/background';
 
 const numHurdles = 10;
 const hurdleSpacing = 250;
@@ -15,7 +16,6 @@ export class HurdlesScene extends Phaser.Scene {
   computerPlayers!: HurdlesComputerPlayer[];
   ground!: Phaser.GameObjects.TileSprite;
   hurdles!: Phaser.Physics.Arcade.Sprite[];
-  background!: Phaser.GameObjects.TileSprite;
 
   constructor() {
     super({ key: SCENE_KEYS.games.HURDLES });
@@ -34,16 +34,12 @@ export class HurdlesScene extends Phaser.Scene {
   }
 
   update() {
-    this.background.tilePositionX = this.cameras.main.scrollX * 0.6;
-
     this.player.update();
     this.computerPlayers.forEach(c => c.update());
   }
 
   private createTrack() {
-    this.background = this.add.tileSprite(0, 0, VIEWPORT.WIDTH, VIEWPORT.HEIGHT, 'background-blue')
-      .setOrigin(0)
-      .setScrollFactor(0);
+     new Background(this);
 
     this.ground = this.add.tileSprite(0, groundY, worldWidth, 96, 'hurdles-ground')
       .setOrigin(0);
