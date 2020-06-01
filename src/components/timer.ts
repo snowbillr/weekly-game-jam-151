@@ -5,7 +5,6 @@ export class Timer {
 
   text: Phaser.GameObjects.BitmapText;
 
-
   constructor(scene: Phaser.Scene, x: number, y: number) {
     this.scene = scene;
     this.text = scene.add.bitmapText(x, y, 'matchup-36-white', '00:00')

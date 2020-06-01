@@ -5,6 +5,7 @@ import { HurdlesPlayer } from './hurdles-player';
 import { CharacterID } from '../../constants/characters';
 import { HurdlesComputerPlayer } from './hurdle-computer-player';
 import { Background } from '../../components/background';
+import { Timer } from '../../components/timer';
 
 const numHurdles = 10;
 const hurdleSpacing = 250;
@@ -26,6 +27,10 @@ export class HurdlesScene extends Phaser.Scene {
     this.addPlayers();
     this.addPhysics();
     this.addWinCondition();
+
+    const timer = new Timer(this, VIEWPORT.CENTER_WIDTH, 100)
+    timer.text.setScrollFactor(0);
+    timer.start();
 
     this.cameras.main.setBounds(0, 0, worldWidth, VIEWPORT.HEIGHT);
     this.cameras.main.startFollow(this.player.sprite);
