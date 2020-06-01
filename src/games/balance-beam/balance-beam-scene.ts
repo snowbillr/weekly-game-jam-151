@@ -78,6 +78,6 @@ export class BalanceBeamScene extends Phaser.Scene {
       this.input.keyboard.off('keydown-SPACE', handlePress)
     });
 
-    this.timingBar.animateSelector();
+    this.timingBar.start();
   }
 }
