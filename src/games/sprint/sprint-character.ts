@@ -15,6 +15,8 @@ export class SprintCharacter {
     this.body.setGravityY(400);
     this.body.collideWorldBounds = true;
     this.body.setBounce(0.2, 0);
+
+    this.character.playAnimation('run');
   }
 
   incrementVelocity(value = 100) {

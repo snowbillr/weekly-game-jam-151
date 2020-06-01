@@ -11,6 +11,12 @@ const blacklist = [
     texture: 'background-pink',
     dx: -1,
     dy: -1
+  },
+  {
+
+    texture: 'background-pink',
+    dx: -1,
+    dy: 1
   }
 ];
 
