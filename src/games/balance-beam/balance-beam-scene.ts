@@ -39,6 +39,7 @@ export class BalanceBeamScene extends Phaser.Scene {
 
     this.player = new Character(this, 100, 295, CharacterID.VIRTUAL_GUY);
     this.player.sprite.scale = 2;
+    this.player.playAnimation('idle');
 
     ////////////////////////////
 
@@ -54,8 +55,13 @@ export class BalanceBeamScene extends Phaser.Scene {
             x: `+=${Phaser.Math.RND.between(75, 150)}`
           },
           duration: 400,
+          onStart: () => {
+            this.player.playAnimation('run');
+          },
           onComplete: () => {
-            if ((this.player.sprite.x + this.player.sprite.width) > this.flag.sprite.x) {
+            this.player.playAnimation('idle');
+
+            if (this.flag.checkPass(this.player.sprite)) {
               this.tweens.killAll();
               this.sound.stopByKey('music/race');
               this.scene.start(SCENE_KEYS.GAME_RESULTS, {
