@@ -1,7 +1,7 @@
 export class Timer {
   private scene: Phaser.Scene;
   private timer: Phaser.Time.TimerEvent;
-  private seconds: number;
+  private startTime: number;
 
   text: Phaser.GameObjects.BitmapText;
 
@@ -10,27 +10,33 @@ export class Timer {
     this.scene = scene;
     this.text = scene.add.bitmapText(x, y, 'matchup-36-white', '00:00')
       .setOrigin(0.5);
-    this.seconds = 0;
+    this.startTime = 0;
 
     this.timer = scene.time.addEvent({
       loop: true,
-      delay: 1000,
+      delay: 10,
       paused: true,
       callback: () => this.tick()
     });
   }
 
   start() {
+    this.startTime = this.scene.time.now;
+
     this.timer.paused = false;
   }
 
   tick() {
-    this.seconds += 1;
+    const elapsedTime = this.scene.time.now - this.startTime;
 
-    const minutes = Math.round(this.seconds / 60);
-    const seconds = this.seconds % 60;
+    const seconds = Phaser.Math.RoundTo(elapsedTime / 1000, -2);
+    const minutes = Math.round(seconds / 60);
 
-    this.text.setText(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`)
+    const displayMinutes = String(minutes).padStart(2, '0');
+    const displaySeconds = String(seconds).split('.')[0].padStart(2, '0');
+    const displayHundredths = String(seconds).split('.')[1].padStart(2, '0');
+
+    this.text.setText(`${displayMinutes}:${displaySeconds}.${displayHundredths}`);
   }
 
   getSeconds() {
