@@ -7,6 +7,7 @@ import { Flag } from '../../components/flag';
 import { SprintCharacter } from './sprint-character';
 import { TimingBar } from '../../components/timing-bar';
 import { OneButtonOlympicsScene } from '../../scenes/one-button-olympics-scene';
+import { Timer } from '../../components/timer';
 
 const worldWidth = 1800;
 
@@ -30,6 +31,9 @@ export class SprintScene extends OneButtonOlympicsScene {
     const timingBar = new TimingBar(this, VIEWPORT.CENTER_WIDTH, 100);
     timingBar.container.setScrollFactor(0);
     timingBar.startSelectorMovement();
+
+    const timer = new Timer(this, VIEWPORT.CENTER_WIDTH, 150);
+    timer.start();
 
     this.player = new SprintCharacter(this, 50, VIEWPORT.HEIGHT - 96 - 16, CharacterID.VIRTUAL_GUY);
     this.physics.add.collider(ground.tileSprite, this.player.character.sprite);
