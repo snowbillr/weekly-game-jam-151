@@ -1,3 +1,5 @@
+type OnPassListener = () => void;
+
 export class Flag {
   sprite: Phaser.GameObjects.Sprite;
 
@@ -7,5 +9,9 @@ export class Flag {
 
   playWave() {
     this.sprite.anims.play('flag-wave');
+  }
+
+  checkPass(gameObject: Phaser.GameObjects.Sprite) {
+    return this.sprite.x < gameObject.x;
   }
 }

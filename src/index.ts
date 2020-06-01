@@ -6,6 +6,8 @@ import { TitleScene } from './scenes/title-scene';
 import { HurdlesScene } from './games/hurdles/hurdles-scene';
 import { GameResultsScene } from './scenes/game-results-scene';
 import { BalanceBeamScene } from './games/balance-beam/balance-beam-scene';
+import { SprintScene } from './games/sprint/sprint-scene';
+import { ButtonPlugin } from './plugins/button-plugin';
 
 const scenes = [
   // BootScene,
@@ -14,7 +16,8 @@ const scenes = [
   GameResultsScene,
 
   HurdlesScene,
-  BalanceBeamScene
+  BalanceBeamScene,
+  SprintScene
 ];
 
 new Phaser.Game({
@@ -23,6 +26,15 @@ new Phaser.Game({
   scene: scenes,
   render: {
     pixelArt: true
+  },
+  plugins: {
+    scene: [
+      {
+        key: 'Button',
+        plugin: ButtonPlugin,
+        mapping: 'button',
+      }
+    ]
   },
   physics: {
     default: 'arcade',

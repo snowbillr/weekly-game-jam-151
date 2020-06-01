@@ -56,7 +56,23 @@ export class TimingBar {
   }
 
   start() {
+    this.startSelectorMovement();
+    this.startGreenZoneMovement();
+  }
+
+  startSelectorMovement() {
     this.selectorTween.play();
+  }
+
+  startGreenZoneMovement() {
     this.greenZoneTween.play();
+  }
+
+  speedUpSelector() {
+    this.selectorTween.setTimeScale(this.selectorTween.timeScale * 1.2);
+  }
+
+  slowDownSelector() {
+    this.selectorTween.setTimeScale(this.selectorTween.timeScale / 1.2);
   }
 }

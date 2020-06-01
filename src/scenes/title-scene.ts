@@ -17,15 +17,9 @@ export class TitleScene extends Phaser.Scene {
     this.add.bitmapText(VIEWPORT.WIDTH / 2, 100, 'matchup-64-glow', 'One Button Olympics!')
       .setOrigin(0.5)
 
-    this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2, 'matchup-36-white', 'Hurdles')
-      .setOrigin(0.5)
-      .setInteractive()
-      .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(SCENE_KEYS.games.HURDLES));
-
-    this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 + 50, 'matchup-36-white', 'Balance Beam')
-      .setOrigin(0.5)
-      .setInteractive()
-      .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(SCENE_KEYS.games.BALANCE_BEAM));
+    this.addEventButton(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2, 'Hurdles', SCENE_KEYS.games.HURDLES);
+    this.addEventButton(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 + 50, 'Balance Beam', SCENE_KEYS.games.BALANCE_BEAM);
+    this.addEventButton(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 + 100, 'Sprint', SCENE_KEYS.games.SPRINT);
 
     this.sound.play('music/title', { loop: true });
   }
@@ -33,5 +27,12 @@ export class TitleScene extends Phaser.Scene {
   startEvent(sceneKey: string) {
     this.sound.stopByKey('music/title');
     this.scene.start(sceneKey);
+  }
+
+  private addEventButton(x: number, y: number, text: string, sceneKey: string) {
+    this.add.bitmapText(x, y, 'matchup-36-white', text)
+      .setOrigin(0.5)
+      .setInteractive()
+      .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(sceneKey));
   }
 }
