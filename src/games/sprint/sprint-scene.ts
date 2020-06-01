@@ -13,6 +13,7 @@ const worldWidth = 1800;
 export class SprintScene extends OneButtonOlympicsScene {
   private flag!: Flag;
   private player!: SprintCharacter;
+  private computerPlayers!: SprintCharacter[];
 
   constructor() {
     super({ key: SCENE_KEYS.games.SPRINT });
@@ -33,6 +34,12 @@ export class SprintScene extends OneButtonOlympicsScene {
     this.player = new SprintCharacter(this, 50, VIEWPORT.HEIGHT - 96 - 16, CharacterID.VIRTUAL_GUY);
     this.physics.add.collider(ground.tileSprite, this.player.character.sprite);
 
+    this.computerPlayers = [CharacterID.MASK_DUDE, CharacterID.NINJA_FROG, CharacterID.PINK_MAN].map(characterID => {
+      const computerPlayer = new SprintCharacter(this, 50, VIEWPORT.HEIGHT - 96 - 16, characterID);
+      this.physics.add.collider(ground.tileSprite, computerPlayer.character.sprite);
+      return computerPlayer;
+    });
+
     this.physics.world.setBounds(0, 0, worldWidth, VIEWPORT.HEIGHT);
 
     this.cameras.main.setBounds(0, 0, worldWidth, VIEWPORT.HEIGHT);
@@ -47,16 +54,39 @@ export class SprintScene extends OneButtonOlympicsScene {
         this.player.decrementVelocity();
       }
     });
+
+    this.updateComputerPlayers();
   }
 
   update() {
     if (this.flag.checkPass(this.player.character.sprite)) {
+      const characterPositions = [
+        this.player,
+        ...this.computerPlayers
+      ].sort((a, b) => {
+        return b.character.sprite.x - a.character.sprite.x
+      });
+
       this.scene.start(SCENE_KEYS.GAME_RESULTS, {
         name: 'Sprint',
-        first: CharacterID.VIRTUAL_GUY,
-        second: CharacterID.NINJA_FROG,
-        third: CharacterID.MASK_DUDE,
-      })
+        first: characterPositions[0].character.id,
+        second: characterPositions[1].character.id,
+        third: characterPositions[2].character.id,
+      });
     }
+  }
+
+  updateComputerPlayers() {
+    this.time.delayedCall(Phaser.Math.RND.between(500, 750), () => {
+      this.computerPlayers.forEach(cp => {
+        if (Phaser.Math.RND.pick([true, true, false])) {
+          cp.incrementVelocity(Phaser.Math.RND.between(75, 125));
+        } else {
+          cp.decrementVelocity(Phaser.Math.RND.between(25, 75));
+        }
+      });
+
+      this.updateComputerPlayers();
+    });
   }
 }

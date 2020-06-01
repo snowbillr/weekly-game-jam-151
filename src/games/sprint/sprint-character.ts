@@ -17,11 +17,11 @@ export class SprintCharacter {
     this.body.setBounce(0.2, 0);
   }
 
-  incrementVelocity() {
-    this.body.velocity.x += 100;
+  incrementVelocity(value = 100) {
+    this.body.velocity.x += value;
   }
 
-  decrementVelocity() {
-    this.body.velocity.x -= 100;
+  decrementVelocity(value = 100) {
+    this.body.velocity.x -= value;
   }
 }
