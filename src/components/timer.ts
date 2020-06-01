@@ -32,9 +32,11 @@ export class Timer {
     const seconds = Phaser.Math.RoundTo(elapsedTime / 1000, -2);
     const minutes = Math.round(seconds / 60);
 
+    const [secondPart, millisecondPart = ''] = String(seconds).split('.');
+
     const displayMinutes = String(minutes).padStart(2, '0');
-    const displaySeconds = String(seconds).split('.')[0].padStart(2, '0');
-    const displayHundredths = String(seconds).split('.')[1].padStart(2, '0');
+    const displaySeconds = secondPart.padStart(2, '0');
+    const displayHundredths = millisecondPart.padStart(2, '0');
 
     this.text.setText(`${displayMinutes}:${displaySeconds}.${displayHundredths}`);
   }
