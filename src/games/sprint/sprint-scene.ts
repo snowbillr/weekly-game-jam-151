@@ -33,6 +33,7 @@ export class SprintScene extends OneButtonOlympicsScene {
     timingBar.startSelectorMovement();
 
     const timer = new Timer(this, VIEWPORT.CENTER_WIDTH, 150);
+    timer.text.setScrollFactor(0);
     timer.start();
 
     this.player = new SprintCharacter(this, 50, VIEWPORT.HEIGHT - 96 - 16, CharacterID.VIRTUAL_GUY);
