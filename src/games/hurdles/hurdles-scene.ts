@@ -1,21 +1,23 @@
 import Phaser from 'phaser'
 import { SCENE_KEYS } from '../../constants/scene-keys'
 import { VIEWPORT } from '../../constants/viewport';
-import { HurdlesPlayer } from './hurdles-player';
 import { CharacterID } from '../../constants/characters';
-import { HurdlesComputerPlayer } from './hurdle-computer-player';
 import { Background } from '../../components/background';
 import { Timer } from '../../components/timer';
+import { OneButtonOlympicsScene } from '../../scenes/one-button-olympics-scene';
+import { HurdleCharacter } from './hurdle-character';
+import { Ground } from '../../components/ground';
 
 const numHurdles = 10;
 const hurdleSpacing = 250;
 const worldWidth = (numHurdles + 1) * hurdleSpacing;
 const groundY = VIEWPORT.HEIGHT - 96;
 
-export class HurdlesScene extends Phaser.Scene {
-  player!: HurdlesPlayer;
-  computerPlayers!: HurdlesComputerPlayer[];
-  ground!: Phaser.GameObjects.TileSprite;
+export class HurdlesScene extends OneButtonOlympicsScene {
+  player!: HurdleCharacter;
+  computerPlayers!: HurdleCharacter[];
+
+  ground!: Ground;
   hurdles!: Phaser.Physics.Arcade.Sprite[];
 
   constructor() {
@@ -28,26 +30,32 @@ export class HurdlesScene extends Phaser.Scene {
     this.addPhysics();
     this.addWinCondition();
 
+    this.button.addListener(() => {
+      this.player.jump();
+    });
+
     const timer = new Timer(this, VIEWPORT.CENTER_WIDTH, 100)
     timer.text.setScrollFactor(0);
     timer.start();
 
     this.cameras.main.setBounds(0, 0, worldWidth, VIEWPORT.HEIGHT);
-    this.cameras.main.startFollow(this.player.sprite);
+    this.cameras.main.startFollow(this.player.character.sprite);
 
     this.sound.play('music/race', { loop: true });
   }
 
   update() {
     this.player.update();
-    this.computerPlayers.forEach(c => c.update());
+    this.computerPlayers.forEach(c => {
+      c.update();
+      c.autoJump();
+    });
   }
 
   private createTrack() {
      (new Background(this)).tileSprite.setScrollFactor(0);
 
-    this.ground = this.add.tileSprite(0, groundY, worldWidth, 96, 'hurdles-ground')
-      .setOrigin(0);
+    this.ground = new Ground(this, worldWidth, { physics: true });
 
     this.hurdles = Array.from({ length: numHurdles }, (v, i) => {
       return this.physics.add.sprite((i + 1) * hurdleSpacing, groundY - 8, 'hurdles-hurdle')
@@ -55,21 +63,22 @@ export class HurdlesScene extends Phaser.Scene {
   }
 
   private addPlayers() {
-    this.player = new HurdlesPlayer(this, CharacterID.VIRTUAL_GUY);
+    this.player = new HurdleCharacter(this, CharacterID.VIRTUAL_GUY);
+    this.physics.add.collider(this.player.character.sprite, this.ground.tileSprite);
+
     this.computerPlayers = [
-      new HurdlesComputerPlayer(this, CharacterID.MASK_DUDE),
-      new HurdlesComputerPlayer(this, CharacterID.NINJA_FROG),
-      new HurdlesComputerPlayer(this, CharacterID.PINK_MAN),
+      new HurdleCharacter(this, CharacterID.MASK_DUDE),
+      new HurdleCharacter(this, CharacterID.NINJA_FROG),
+      new HurdleCharacter(this, CharacterID.PINK_MAN),
     ];
+    this.computerPlayers.forEach(cp => {
+      this.physics.add.collider(cp.character.sprite, this.ground.tileSprite);
+    });
   }
 
   private addPhysics() {
     this.physics.world.setBounds(0, 0, worldWidth, VIEWPORT.HEIGHT);
     this.physics.world.setBoundsCollision(false, true, false, false);
-
-    this.physics.add.existing(this.ground);
-    (this.ground.body as Phaser.Physics.Arcade.Body).immovable = true;
-    (this.ground.body as Phaser.Physics.Arcade.Body).allowGravity = false;
 
     this.hurdles.forEach(hurdle => {
       (hurdle.body as Phaser.Physics.Arcade.Body)
@@ -77,8 +86,8 @@ export class HurdlesScene extends Phaser.Scene {
         .setCollideWorldBounds(true)
         .setDragX(200);
 
-      this.physics.add.collider(hurdle, this.ground);
-      this.physics.add.collider(hurdle, this.player.sprite, () => {
+      this.physics.add.collider(hurdle, this.ground.tileSprite);
+      this.physics.add.collider(hurdle, this.player.character.sprite, () => {
         hurdle.setVelocityX(Phaser.Math.RND.between(100, 200));
         if (!hurdle.body.touching.up) {
           hurdle.setVelocityY(Phaser.Math.RND.between(-150, -250));
@@ -86,7 +95,7 @@ export class HurdlesScene extends Phaser.Scene {
       });
 
       this.computerPlayers.forEach(computer => {
-        this.physics.add.collider(hurdle, computer.sprite, () => {
+        this.physics.add.collider(hurdle, computer.character.sprite, () => {
           hurdle.setVelocityX(Phaser.Math.RND.between(100, 200));
           if (!hurdle.body.touching.up) {
             hurdle.setVelocityY(Phaser.Math.RND.between(-150, -250));
@@ -101,12 +110,12 @@ export class HurdlesScene extends Phaser.Scene {
       const positions = [
         {
           characterID: this.player.character.id,
-          x: this.player.sprite.x
+          x: this.player.character.sprite.x
         },
         ...this.computerPlayers.map(c => {
           return {
             characterID: c.character.id,
-            x: c.sprite.x
+            x: c.character.sprite.x
           }
         })
       ].sort((a, b) => b.x - a.x);

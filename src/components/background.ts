@@ -9,7 +9,7 @@ type BackgroundData = {
 const blacklist = [
   {
     texture: 'background-pink',
-    dx: -1,
+    dx: 1,
     dy: -1
   },
   {
