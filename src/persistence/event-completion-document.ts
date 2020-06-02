@@ -91,9 +91,6 @@ export class EventCompletionDocument implements PersistenceDocument {
   fromJson(data: Record<string, any>) {
     const saveData = data as Record<EventId, EventRecord | CompletedEventRecord>;
     this.events = saveData;
-
-    console.log('reading')
-    console.log(this.events)
   }
 
   clear() {

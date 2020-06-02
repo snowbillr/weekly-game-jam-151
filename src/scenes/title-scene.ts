@@ -63,12 +63,17 @@ export class TitleScene extends OneButtonOlympicsScene {
       .setOrigin(0, 0.5)
       .setInteractive()
       .on(Phaser.Input.Events.GAMEOBJECT_POINTER_OVER, () => {
+        if (checked) return;
         background.alpha = 1;
       })
       .on(Phaser.Input.Events.GAMEOBJECT_POINTER_OUT, () => {
+        if (checked) return;
         background.alpha = 0.7;
       })
-      .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(sceneKey))
+      .once(Phaser.Input.Events.POINTER_DOWN, () => {
+        if (checked) return;
+        this.startEvent(sceneKey)
+      })
     checklistButton.add(background);
 
     checklistButton.add(
@@ -76,12 +81,16 @@ export class TitleScene extends OneButtonOlympicsScene {
         .setStrokeStyle(4, 0xFFFFFF)
         .setInteractive()
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_OVER, () => {
+          if (checked) return;
           background.alpha = 1;
         })
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_OUT, () => {
           background.alpha = 0.7;
         })
-        .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(sceneKey))
+        .once(Phaser.Input.Events.POINTER_DOWN, () => {
+          if (checked) return;
+          this.startEvent(sceneKey)
+        })
     );
 
     if (checked) {
@@ -95,12 +104,17 @@ export class TitleScene extends OneButtonOlympicsScene {
         .setOrigin(0, 0.5)
         .setInteractive()
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_OVER, () => {
+          if (checked) return;
           background.alpha = 1;
         })
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_OUT, () => {
+          if (checked) return;
           background.alpha = 0.7;
         })
-        .once(Phaser.Input.Events.POINTER_DOWN, () => this.startEvent(sceneKey))
+        .once(Phaser.Input.Events.POINTER_DOWN, () => {
+          if (checked) return;
+          this.startEvent(sceneKey)
+        })
     );
   }
 
