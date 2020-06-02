@@ -57,12 +57,44 @@ export class EventCompletionDocument implements PersistenceDocument {
     eventRecord.placements = placements;
   }
 
-  getEventPlacements(eventId: EventId) {
-    if (this.events[eventId].completed) {
-      return (this.events[eventId] as CompletedEventRecord).placements;
-    } else {
-      return null;
-    }
+  getCharacterPlacements() {
+    const characterPlacements = [
+      {
+        id: CharacterID.VIRTUAL_GUY,
+        first: 0,
+        second: 0,
+        third: 0
+      },
+      {
+        id: CharacterID.MASK_DUDE,
+        first: 0,
+        second: 0,
+        third: 0
+      },
+      {
+        id: CharacterID.PINK_MAN,
+        first: 0,
+        second: 0,
+        third: 0
+      },
+      {
+        id: CharacterID.NINJA_FROG,
+        first: 0,
+        second: 0,
+        third: 0
+      },
+    ];
+
+    Object.values(this.events).forEach((event) => {
+      if (event.completed) {
+        const placements = (event as CompletedEventRecord).placements;
+        characterPlacements.find(cp => cp.id === placements.first)!.first += 1;
+        characterPlacements.find(cp => cp.id === placements.second)!.second += 1;
+        characterPlacements.find(cp => cp.id === placements.third)!.third += 1;
+      }
+    });
+
+    return characterPlacements;
   }
 
   toJson(): object {

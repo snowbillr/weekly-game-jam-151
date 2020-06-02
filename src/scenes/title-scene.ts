@@ -41,7 +41,7 @@ export class TitleScene extends OneButtonOlympicsScene {
 
   private addChecklistMenu(items: { text: string, sceneKey: string, checked?: boolean }[]) {
     const x = VIEWPORT.CENTER_WIDTH;
-    const startingY = VIEWPORT.CENTER_HEIGHT;
+    const startingY = VIEWPORT.CENTER_HEIGHT - 32;
     const yStep = 50;
 
     items.forEach(({ text, sceneKey, checked }, i) => {
@@ -99,91 +99,27 @@ export class TitleScene extends OneButtonOlympicsScene {
   }
 
   addOverallRankings(eventCompletions: EventCompletionDocument) {
-    const characterRankings = {
-      [CharacterID.VIRTUAL_GUY]: {
-        first: 0,
-        second: 0,
-        third: 0
-      },
-      [CharacterID.MASK_DUDE]: {
-        first: 0,
-        second: 0,
-        third: 0
-      },
-      [CharacterID.PINK_MAN]: {
-        first: 0,
-        second: 0,
-        third: 0
-      },
-      [CharacterID.NINJA_FROG]: {
-        first: 0,
-        second: 0,
-        third: 0
-      },
-    };
-
-    let placements = eventCompletions.getEventPlacements(EventId.ARCHERY)
-    if (placements) {
-      characterRankings[placements.first].first += 1;
-      characterRankings[placements.second].second += 1;
-      characterRankings[placements.third].third += 1;
-    }
-    placements = eventCompletions.getEventPlacements(EventId.BALANCE_BEAM)
-    if (placements) {
-      characterRankings[placements.first].first += 1;
-      characterRankings[placements.second].second += 1;
-      characterRankings[placements.third].third += 1;
-    }
-    placements = eventCompletions.getEventPlacements(EventId.HURDLES)
-    if (placements) {
-      characterRankings[placements.first].first += 1;
-      characterRankings[placements.second].second += 1;
-      characterRankings[placements.third].third += 1;
-    }
-    placements = eventCompletions.getEventPlacements(EventId.SPRINT)
-    if (placements) {
-      characterRankings[placements.first].first += 1;
-      characterRankings[placements.second].second += 1;
-      characterRankings[placements.third].third += 1;
-    }
+    const characterRankings = eventCompletions.getCharacterPlacements();
 
     const x = 50;
     const startingY = 150;
     const yStep = 64;
-    let goldWidth = 0;
-    let silverWidth = 0;
-    let bronzeWidth = 0;
 
-    new Character(this, x, -8 + startingY + yStep * 0, CharacterID.VIRTUAL_GUY).sprite.scale = 2;
-    goldWidth = characterRankings[CharacterID.VIRTUAL_GUY].first * 20;
-    silverWidth = characterRankings[CharacterID.VIRTUAL_GUY].second * 20;
-    bronzeWidth = characterRankings[CharacterID.VIRTUAL_GUY].third * 20;
-    this.add.rectangle(x + 64, startingY + yStep * 0, goldWidth, 32, 0xfbf236).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-    this.add.rectangle(x + 64 + goldWidth, startingY + yStep * 0, silverWidth, 32, 0xcbdbfc).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-    this.add.rectangle(x + 64 + goldWidth + silverWidth, startingY + yStep * 0, bronzeWidth, 32, 0x8a6f30).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
+    characterRankings.forEach((characterRanking, i) => {
+      new Character(this, x, -8 + startingY + yStep * i, characterRanking.id).sprite.scale = 2;
+      const goldWidth = characterRanking.first * 20;
+      const silverWidth = characterRanking.second * 20;
+      const bronzeWidth = characterRanking.third * 20;
 
-    new Character(this, x, -8 + startingY + yStep * 1, CharacterID.NINJA_FROG).sprite.scale = 2;
-    goldWidth = characterRankings[CharacterID.NINJA_FROG].first * 20;
-    silverWidth = characterRankings[CharacterID.NINJA_FROG].second * 20;
-    bronzeWidth = characterRankings[CharacterID.NINJA_FROG].third * 20;
-    this.add.rectangle(x + 64, startingY + yStep * 1, goldWidth, 32, 0xfbf236).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-    this.add.rectangle(x + 64 + goldWidth, startingY + yStep * 1, silverWidth, 32, 0xcbdbfc).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-    this.add.rectangle(x + 64 + goldWidth + silverWidth, startingY + yStep * 1, bronzeWidth, 32, 0x8a6f30).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-
-    new Character(this, x, -8 + startingY + yStep * 2, CharacterID.PINK_MAN).sprite.scale = 2;
-    goldWidth = characterRankings[CharacterID.PINK_MAN].first * 20;
-    silverWidth = characterRankings[CharacterID.PINK_MAN].second * 20;
-    bronzeWidth = characterRankings[CharacterID.PINK_MAN].third * 20;
-    this.add.rectangle(x + 64, startingY + yStep * 2, goldWidth, 32, 0xfbf236).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-    this.add.rectangle(x + 64 + goldWidth, startingY + yStep * 2, silverWidth, 32, 0xcbdbfc).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-    this.add.rectangle(x + 64 + goldWidth + silverWidth, startingY + yStep * 2, bronzeWidth, 32, 0x8a6f30).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-
-    new Character(this, x, -8 + startingY + yStep * 3, CharacterID.MASK_DUDE).sprite.scale = 2;
-    goldWidth = characterRankings[CharacterID.MASK_DUDE].first * 20;
-    silverWidth = characterRankings[CharacterID.MASK_DUDE].second * 20;
-    bronzeWidth = characterRankings[CharacterID.MASK_DUDE].third * 20;
-    this.add.rectangle(x + 64, startingY + yStep * 3, goldWidth, 32, 0xfbf236).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-    this.add.rectangle(x + 64 + goldWidth, startingY + yStep * 3, silverWidth, 32, 0xcbdbfc).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
-    this.add.rectangle(x + 64 + goldWidth + silverWidth, startingY + yStep * 3, bronzeWidth, 32, 0x8a6f30).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
+      for (let j = 0; j < characterRanking.first; j++) {
+        this.add.rectangle(x + 64 + 20 * j, startingY + yStep * i, 20, 32, 0xfbf236).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
+      }
+      for (let j = 0; j < characterRanking.second; j++) {
+        this.add.rectangle(x + 64 + goldWidth + 20 * j, startingY + yStep * i, 20, 32, 0xcbdbfc).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
+      }
+      for (let j = 0; j < characterRanking.third; j++) {
+        this.add.rectangle(x + 64 + goldWidth + silverWidth + 20 * j, startingY + yStep * i, 20, 32, 0x8a6f30).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
+      }
+    });
   }
 }
