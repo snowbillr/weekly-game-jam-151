@@ -91,6 +91,17 @@ export class ArcheryScene extends OneButtonOlympicsScene {
         scores[currentShot] = SCORES.miss;
       }
 
+      crosshair
+        .setVelocity(
+          Phaser.Math.Between(300, 500),
+          Phaser.Math.Between(300, 500)
+        );
+      target
+        .setVelocity(
+          Phaser.Math.Between(300, 500),
+          Phaser.Math.Between(300, 500)
+        );
+
       currentShot += 1;
       if (currentShot === SHOT_LIMIT) {
         const playerScores = {

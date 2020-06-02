@@ -29,6 +29,8 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('background-purple', 'assets/pack/Background/Purple.png');
     this.load.image('background-yellow', 'assets/pack/Background/Yellow.png');
 
+    this.load.image('green-check', 'assets/green-check.png');
+
     this.load.image('podium-first', 'assets/podiums/first.png');
     this.load.image('podium-second', 'assets/podiums/second.png');
     this.load.image('podium-third', 'assets/podiums/third.png');
