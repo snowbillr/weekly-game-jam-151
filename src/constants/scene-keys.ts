@@ -10,5 +10,6 @@ export const SCENE_KEYS = {
     ARCHERY: 'archery'
   },
 
-  GAME_RESULTS: 'game-results'
+  GAME_RESULTS: 'game-results',
+  FINAL_RESULTS: 'final-results'
 };

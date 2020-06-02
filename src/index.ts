@@ -10,12 +10,14 @@ import { SprintScene } from './games/sprint/sprint-scene';
 import { ButtonPlugin } from './plugins/scene/button-plugin';
 import { ArcheryScene } from './games/archery/archery-scene';
 import { PersistencePlugin } from './plugins/global/persistence-plugin';
+import { FinalResultsScene } from './scenes/final-results-scene';
 
 const scenes = [
   // BootScene,
   PreloadScene,
   TitleScene,
   GameResultsScene,
+  FinalResultsScene,
 
   HurdlesScene,
   BalanceBeamScene,

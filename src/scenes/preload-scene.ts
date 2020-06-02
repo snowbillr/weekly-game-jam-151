@@ -35,6 +35,7 @@ export class PreloadScene extends OneButtonOlympicsScene {
     this.load.image('background-purple', 'assets/pack/Background/Purple.png');
     this.load.image('background-yellow', 'assets/pack/Background/Yellow.png');
 
+    this.load.image('trophy', 'assets/trophy.png');
     this.load.image('green-check', 'assets/green-check.png');
 
     this.load.image('podium-first', 'assets/podiums/first.png');

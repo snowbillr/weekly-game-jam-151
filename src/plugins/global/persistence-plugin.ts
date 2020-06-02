@@ -4,6 +4,7 @@ export interface PersistenceDocument {
   name: string;
   toJson: () => object;
   fromJson: (data: Record<string, any>) => void;
+  clear: () => void;
 }
 
 export class PersistencePlugin extends Phaser.Plugins.BasePlugin {
@@ -25,6 +26,11 @@ export class PersistencePlugin extends Phaser.Plugins.BasePlugin {
     if (!document) throw new Error(`No persistence document found: ${name}`);
 
     return document as T;
+  }
+
+  clear() {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({}));
+    this.documents.forEach(doc => doc.clear());
   }
 
   store() {

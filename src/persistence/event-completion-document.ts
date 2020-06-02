@@ -31,24 +31,7 @@ export class EventCompletionDocument implements PersistenceDocument {
   public events: Record<EventId, EventRecord | CompletedEventRecord>;
 
   constructor() {
-    this.events = {
-      [EventId.ARCHERY]: {
-        eventId: EventId.ARCHERY,
-        completed: false
-      },
-      [EventId.BALANCE_BEAM]: {
-        eventId: EventId.BALANCE_BEAM,
-        completed: false
-      },
-      [EventId.HURDLES]: {
-        eventId: EventId.HURDLES,
-        completed: false
-      },
-      [EventId.SPRINT]: {
-        eventId: EventId.SPRINT,
-        completed: false
-      },
-    };
+    this.clear();
   }
 
   completeEvent(eventId: EventId, placements: EventPlacements) {
@@ -97,6 +80,10 @@ export class EventCompletionDocument implements PersistenceDocument {
     return characterPlacements;
   }
 
+  areAllComplete() {
+    return Object.values(this.events).every(e => e.completed);
+  }
+
   toJson(): object {
     return this.events;
   }
@@ -104,5 +91,29 @@ export class EventCompletionDocument implements PersistenceDocument {
   fromJson(data: Record<string, any>) {
     const saveData = data as Record<EventId, EventRecord | CompletedEventRecord>;
     this.events = saveData;
+
+    console.log('reading')
+    console.log(this.events)
+  }
+
+  clear() {
+    this.events = {
+      [EventId.ARCHERY]: {
+        eventId: EventId.ARCHERY,
+        completed: false
+      },
+      [EventId.BALANCE_BEAM]: {
+        eventId: EventId.BALANCE_BEAM,
+        completed: false
+      },
+      [EventId.HURDLES]: {
+        eventId: EventId.HURDLES,
+        completed: false
+      },
+      [EventId.SPRINT]: {
+        eventId: EventId.SPRINT,
+        completed: false
+      },
+    };
   }
 }

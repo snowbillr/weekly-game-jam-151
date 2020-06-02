@@ -16,12 +16,18 @@ export class TitleScene extends OneButtonOlympicsScene {
   }
 
   create() {
+   const eventCompletions = this.persistence.getDocument<EventCompletionDocument>('event-completion')
+
+    if (eventCompletions.areAllComplete()) {
+      this.scene.start(SCENE_KEYS.FINAL_RESULTS);
+      return;
+    }
+
     new Background(this);
 
     this.add.bitmapText(VIEWPORT.WIDTH / 2, 50, 'matchup-64-glow', 'One Button Olympics!')
       .setOrigin(0.5)
 
-   const eventCompletions = this.persistence.getDocument<EventCompletionDocument>('event-completion')
    this.addChecklistMenu([
     { text: 'Hurdles', sceneKey: SCENE_KEYS.games.HURDLES, checked: eventCompletions.events[EventId.HURDLES].completed },
     { text: 'Balance Beam', sceneKey: SCENE_KEYS.games.BALANCE_BEAM, checked: eventCompletions.events[EventId.BALANCE_BEAM].completed },
