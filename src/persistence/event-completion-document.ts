@@ -57,6 +57,14 @@ export class EventCompletionDocument implements PersistenceDocument {
     eventRecord.placements = placements;
   }
 
+  getEventPlacements(eventId: EventId) {
+    if (this.events[eventId].completed) {
+      return (this.events[eventId] as CompletedEventRecord).placements;
+    } else {
+      return null;
+    }
+  }
+
   toJson(): object {
     return this.events;
   }
