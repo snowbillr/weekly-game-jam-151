@@ -18,9 +18,8 @@ export class TitleScene extends OneButtonOlympicsScene {
   create() {
     new Background(this);
 
-    this.add.bitmapText(VIEWPORT.WIDTH / 2, 75, 'matchup-64-glow', 'One Button Olympics!')
+    this.add.bitmapText(VIEWPORT.WIDTH / 2, 50, 'matchup-64-glow', 'One Button Olympics!')
       .setOrigin(0.5)
-
 
    const eventCompletions = this.persistence.getDocument<EventCompletionDocument>('event-completion')
    this.addChecklistMenu([
@@ -155,7 +154,7 @@ export class TitleScene extends OneButtonOlympicsScene {
     let silverWidth = 0;
     let bronzeWidth = 0;
 
-    new Character(this, x, startingY + yStep * 0, CharacterID.VIRTUAL_GUY).sprite.scale = 2;
+    new Character(this, x, -8 + startingY + yStep * 0, CharacterID.VIRTUAL_GUY).sprite.scale = 2;
     goldWidth = characterRankings[CharacterID.VIRTUAL_GUY].first * 20;
     silverWidth = characterRankings[CharacterID.VIRTUAL_GUY].second * 20;
     bronzeWidth = characterRankings[CharacterID.VIRTUAL_GUY].third * 20;
@@ -163,7 +162,7 @@ export class TitleScene extends OneButtonOlympicsScene {
     this.add.rectangle(x + 64 + goldWidth, startingY + yStep * 0, silverWidth, 32, 0xcbdbfc).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
     this.add.rectangle(x + 64 + goldWidth + silverWidth, startingY + yStep * 0, bronzeWidth, 32, 0x8a6f30).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
 
-    new Character(this, x, startingY + yStep * 1, CharacterID.NINJA_FROG).sprite.scale = 2;
+    new Character(this, x, -8 + startingY + yStep * 1, CharacterID.NINJA_FROG).sprite.scale = 2;
     goldWidth = characterRankings[CharacterID.NINJA_FROG].first * 20;
     silverWidth = characterRankings[CharacterID.NINJA_FROG].second * 20;
     bronzeWidth = characterRankings[CharacterID.NINJA_FROG].third * 20;
@@ -171,7 +170,7 @@ export class TitleScene extends OneButtonOlympicsScene {
     this.add.rectangle(x + 64 + goldWidth, startingY + yStep * 1, silverWidth, 32, 0xcbdbfc).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
     this.add.rectangle(x + 64 + goldWidth + silverWidth, startingY + yStep * 1, bronzeWidth, 32, 0x8a6f30).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
 
-    new Character(this, x, startingY + yStep * 2, CharacterID.PINK_MAN).sprite.scale = 2;
+    new Character(this, x, -8 + startingY + yStep * 2, CharacterID.PINK_MAN).sprite.scale = 2;
     goldWidth = characterRankings[CharacterID.PINK_MAN].first * 20;
     silverWidth = characterRankings[CharacterID.PINK_MAN].second * 20;
     bronzeWidth = characterRankings[CharacterID.PINK_MAN].third * 20;
@@ -179,7 +178,7 @@ export class TitleScene extends OneButtonOlympicsScene {
     this.add.rectangle(x + 64 + goldWidth, startingY + yStep * 2, silverWidth, 32, 0xcbdbfc).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
     this.add.rectangle(x + 64 + goldWidth + silverWidth, startingY + yStep * 2, bronzeWidth, 32, 0x8a6f30).setOrigin(0, 0.5).setStrokeStyle(2, 0x000000)
 
-    new Character(this, x, startingY + yStep * 3, CharacterID.MASK_DUDE).sprite.scale = 2;
+    new Character(this, x, -8 + startingY + yStep * 3, CharacterID.MASK_DUDE).sprite.scale = 2;
     goldWidth = characterRankings[CharacterID.MASK_DUDE].first * 20;
     silverWidth = characterRankings[CharacterID.MASK_DUDE].second * 20;
     bronzeWidth = characterRankings[CharacterID.MASK_DUDE].third * 20;
