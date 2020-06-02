@@ -6,6 +6,7 @@ import { Character } from '../../components/character';
 import { CharacterID } from '../../constants/characters';
 import { Flag } from '../../components/flag';
 import { Timer } from '../../components/timer';
+import { EventId } from '../../persistence/event-completion-document';
 
 export class BalanceBeamScene extends Phaser.Scene {
   private timingBar!: TimingBar;
@@ -65,6 +66,7 @@ export class BalanceBeamScene extends Phaser.Scene {
               this.tweens.killAll();
               this.sound.stopByKey('music/race');
               this.scene.start(SCENE_KEYS.GAME_RESULTS, {
+                eventId: EventId.BALANCE_BEAM,
                 name: 'BALANCE BEAM',
                 first: CharacterID.VIRTUAL_GUY,
                 second: CharacterID.NINJA_FROG,

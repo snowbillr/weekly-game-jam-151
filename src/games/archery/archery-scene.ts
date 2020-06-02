@@ -4,6 +4,7 @@ import { Background } from '../../components/background';
 import { VIEWPORT } from '../../constants/viewport';
 import { CharacterID } from '../../constants/characters';
 import { Character } from '../../components/character';
+import { EventId } from '../../persistence/event-completion-document';
 
 const SHOT_LIMIT = 3;
 
@@ -114,6 +115,7 @@ export class ArcheryScene extends OneButtonOlympicsScene {
 
         this.sound.stopByKey('music/race');
         this.scene.start(SCENE_KEYS.GAME_RESULTS, {
+          eventId: EventId.ARCHERY,
           name: 'ARCHERY',
           first: sortedPlayerScores[0][0],
           second: sortedPlayerScores[1][0],

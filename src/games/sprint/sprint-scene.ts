@@ -8,6 +8,7 @@ import { SprintCharacter } from './sprint-character';
 import { TimingBar } from '../../components/timing-bar';
 import { OneButtonOlympicsScene } from '../../scenes/one-button-olympics-scene';
 import { Timer } from '../../components/timer';
+import { EventId } from '../../persistence/event-completion-document';
 
 const worldWidth = 1800;
 
@@ -74,6 +75,7 @@ export class SprintScene extends OneButtonOlympicsScene {
 
       this.sound.stopByKey('music/race');
       this.scene.start(SCENE_KEYS.GAME_RESULTS, {
+        eventId: EventId.SPRINT,
         name: 'Sprint',
         first: characterPositions[0].character.id,
         second: characterPositions[1].character.id,

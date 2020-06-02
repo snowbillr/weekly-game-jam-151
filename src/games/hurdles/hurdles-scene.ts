@@ -7,6 +7,7 @@ import { Timer } from '../../components/timer';
 import { OneButtonOlympicsScene } from '../../scenes/one-button-olympics-scene';
 import { HurdleCharacter } from './hurdle-character';
 import { Ground } from '../../components/ground';
+import { EventId } from '../../persistence/event-completion-document';
 
 const numHurdles = 10;
 const hurdleSpacing = 250;
@@ -122,6 +123,7 @@ export class HurdlesScene extends OneButtonOlympicsScene {
 
       this.sound.stopByKey('music/race');
       this.scene.start(SCENE_KEYS.GAME_RESULTS, {
+        eventId: EventId.HURDLES,
         name: 'HURDLES',
         first: positions[0].characterID,
         second: positions[1].characterID,

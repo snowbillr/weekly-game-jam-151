@@ -2,15 +2,18 @@ import { SCENE_KEYS } from '../constants/scene-keys';
 import { VIEWPORT } from '../constants/viewport';
 import { CharacterID, Characters } from '../constants/characters';
 import { Background } from '../components/background';
+import { EventId, EventCompletionDocument } from '../persistence/event-completion-document';
+import { OneButtonOlympicsScene } from './one-button-olympics-scene';
 
 type ResultsData = {
+  eventId: EventId,
   name: string,
   first: CharacterID,
   second: CharacterID,
   third: CharacterID,
 }
 
-export class GameResultsScene extends Phaser.Scene {
+export class GameResultsScene extends OneButtonOlympicsScene {
   background!: Phaser.GameObjects.TileSprite;
 
   constructor() {
@@ -19,6 +22,14 @@ export class GameResultsScene extends Phaser.Scene {
 
   create(resultsData: ResultsData) {
     this.sound.play('music/event-results', { loop: true });
+
+    this.persistence.getDocument<EventCompletionDocument>('event-completion')
+      .completeEvent(resultsData.eventId, {
+        first: resultsData.first,
+        second: resultsData.second,
+        third: resultsData.third
+      });
+    this.persistence.store();
 
     new Background(this);
 

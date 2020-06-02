@@ -7,8 +7,9 @@ import { HurdlesScene } from './games/hurdles/hurdles-scene';
 import { GameResultsScene } from './scenes/game-results-scene';
 import { BalanceBeamScene } from './games/balance-beam/balance-beam-scene';
 import { SprintScene } from './games/sprint/sprint-scene';
-import { ButtonPlugin } from './plugins/button-plugin';
+import { ButtonPlugin } from './plugins/scene/button-plugin';
 import { ArcheryScene } from './games/archery/archery-scene';
+import { PersistencePlugin } from './plugins/global/persistence-plugin';
 
 const scenes = [
   // BootScene,
@@ -31,11 +32,10 @@ new Phaser.Game({
   },
   plugins: {
     scene: [
-      {
-        key: 'Button',
-        plugin: ButtonPlugin,
-        mapping: 'button',
-      }
+      { key: 'Button', plugin: ButtonPlugin, mapping: 'button' }
+    ],
+    global: [
+      { key: 'PersistencePlugin', plugin: PersistencePlugin, mapping: 'persistence', start: true },
     ]
   },
   physics: {

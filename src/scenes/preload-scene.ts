@@ -1,9 +1,15 @@
 import { VIEWPORT } from '../constants/viewport';
 import { SCENE_KEYS } from '../constants/scene-keys';
+import { OneButtonOlympicsScene } from './one-button-olympics-scene';
+import { EventCompletionDocument } from '../persistence/event-completion-document';
 
-export class PreloadScene extends Phaser.Scene {
+export class PreloadScene extends OneButtonOlympicsScene {
   constructor() {
     super({ key: SCENE_KEYS.PRELOAD });
+  }
+
+  init() {
+    this.persistence.addDocument(new EventCompletionDocument());
   }
 
   preload() {
@@ -61,6 +67,7 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   create() {
+    this.persistence.read();
     this.scene.start(SCENE_KEYS.TITLE);
   }
 
