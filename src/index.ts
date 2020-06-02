@@ -8,6 +8,7 @@ import { GameResultsScene } from './scenes/game-results-scene';
 import { BalanceBeamScene } from './games/balance-beam/balance-beam-scene';
 import { SprintScene } from './games/sprint/sprint-scene';
 import { ButtonPlugin } from './plugins/button-plugin';
+import { ArcheryScene } from './games/archery/archery-scene';
 
 const scenes = [
   // BootScene,
@@ -17,7 +18,8 @@ const scenes = [
 
   HurdlesScene,
   BalanceBeamScene,
-  SprintScene
+  SprintScene,
+  ArcheryScene
 ];
 
 new Phaser.Game({

@@ -52,6 +52,10 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('beam', 'assets/games/balance-beam/beam.png');
     this.load.image('beam-edge', 'assets/games/balance-beam/beam-edge.png');
     this.load.image('beam-legs', 'assets/games/balance-beam/beam-legs.png');
+
+    this.load.image('archery-target', 'assets/games/archery/target.png');
+    this.load.image('archery-crosshair', 'assets/games/archery/crosshair.png');
+    this.load.image('red-x', 'assets/games/archery/red-x.png');
   }
 
   create() {

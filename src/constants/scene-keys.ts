@@ -6,7 +6,8 @@ export const SCENE_KEYS = {
   games: {
     HURDLES: 'hurdles',
     BALANCE_BEAM: 'balance-beam',
-    SPRINT: 'sprint'
+    SPRINT: 'sprint',
+    ARCHERY: 'archery'
   },
 
   GAME_RESULTS: 'game-results'

@@ -20,6 +20,7 @@ export class TitleScene extends Phaser.Scene {
     this.addEventButton(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2, 'Hurdles', SCENE_KEYS.games.HURDLES);
     this.addEventButton(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 + 50, 'Balance Beam', SCENE_KEYS.games.BALANCE_BEAM);
     this.addEventButton(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 + 100, 'Sprint', SCENE_KEYS.games.SPRINT);
+    this.addEventButton(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT / 2 + 150, 'Archery', SCENE_KEYS.games.ARCHERY);
 
     this.sound.play('music/title', { loop: true });
   }

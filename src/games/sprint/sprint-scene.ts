@@ -72,6 +72,7 @@ export class SprintScene extends OneButtonOlympicsScene {
         return b.character.sprite.x - a.character.sprite.x
       });
 
+      this.sound.stopByKey('music/race');
       this.scene.start(SCENE_KEYS.GAME_RESULTS, {
         name: 'Sprint',
         first: characterPositions[0].character.id,
