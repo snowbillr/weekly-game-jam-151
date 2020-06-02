@@ -36,7 +36,7 @@ export class FinalResultsScene extends OneButtonOlympicsScene {
       return scores;
     }, new Array());
 
-    characterScores.sort((a, b) => b[1] - a[1]);
+    characterScores.sort((a, b) => b.score - a.score);
     const first = characterScores[0];
     new Character(this, VIEWPORT.CENTER_WIDTH, VIEWPORT.CENTER_HEIGHT + 48, first.id)
       .sprite.setScale(3)
@@ -47,7 +47,7 @@ export class FinalResultsScene extends OneButtonOlympicsScene {
     this.button.addListener(() => {
       this.persistence.clear();
       this.persistence.read();
-      this.sound.stopByKey('music/final-result');
+      this.sound.stopByKey('music/final-results');
       this.scene.start(SCENE_KEYS.TITLE);
     })
   }

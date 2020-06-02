@@ -38,14 +38,13 @@ export class GameResultsScene extends OneButtonOlympicsScene {
       .setOrigin(0.5)
       .setLetterSpacing(2)
 
-    // back to event list
     this.add.bitmapText(VIEWPORT.WIDTH / 2, VIEWPORT.HEIGHT - 40, 'matchup-36-white', 'Back to Event List')
-      .setOrigin(0.5)
-      .setInteractive()
-      .once(Phaser.Input.Events.POINTER_DOWN, () => {
-        this.sound.stopByKey('music/event-results');
-        this.scene.start(SCENE_KEYS.TITLE);
-      })
+      .setOrigin(0.5);
+
+    this.button.addListener(() => {
+      this.sound.stopByKey('music/event-results');
+      this.scene.start(SCENE_KEYS.TITLE);
+    })
 
     // podiums
     const podiums = {

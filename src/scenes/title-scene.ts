@@ -28,14 +28,14 @@ export class TitleScene extends OneButtonOlympicsScene {
     this.add.bitmapText(VIEWPORT.WIDTH / 2, 50, 'matchup-64-glow', 'One Button Olympics!')
       .setOrigin(0.5)
 
-   this.addChecklistMenu([
-    { text: 'Hurdles', sceneKey: SCENE_KEYS.games.HURDLES, checked: eventCompletions.events[EventId.HURDLES].completed },
-    { text: 'Balance Beam', sceneKey: SCENE_KEYS.games.BALANCE_BEAM, checked: eventCompletions.events[EventId.BALANCE_BEAM].completed },
-    { text: 'Sprint', sceneKey: SCENE_KEYS.games.SPRINT, checked: eventCompletions.events[EventId.SPRINT].completed },
-    { text: 'Archery', sceneKey: SCENE_KEYS.games.ARCHERY, checked: eventCompletions.events[EventId.ARCHERY].completed },
-   ]);
+    this.addChecklistMenu([
+      { text: 'Hurdles', sceneKey: SCENE_KEYS.games.HURDLES, checked: eventCompletions.events[EventId.HURDLES].completed },
+      { text: 'Balance Beam', sceneKey: SCENE_KEYS.games.BALANCE_BEAM, checked: eventCompletions.events[EventId.BALANCE_BEAM].completed },
+      { text: 'Sprint', sceneKey: SCENE_KEYS.games.SPRINT, checked: eventCompletions.events[EventId.SPRINT].completed },
+      { text: 'Archery', sceneKey: SCENE_KEYS.games.ARCHERY, checked: eventCompletions.events[EventId.ARCHERY].completed },
+    ]);
 
-   this.addOverallRankings(eventCompletions);
+    this.addOverallRankings(eventCompletions);
 
     this.sound.play('music/title', { loop: true });
   }
