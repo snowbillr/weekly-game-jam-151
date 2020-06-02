@@ -28,7 +28,7 @@ type CompletedEventRecord = {
 export class EventCompletionDocument implements PersistenceDocument {
   public readonly name: string = 'event-completion';
 
-  public events: Record<EventId, EventRecord | CompletedEventRecord>;
+  public events!: Record<EventId, EventRecord | CompletedEventRecord>;
 
   constructor() {
     this.clear();
